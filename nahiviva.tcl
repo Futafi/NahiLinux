@@ -280,6 +280,7 @@ proc NahiSave {} {
 	set flag 0
 	while {! [eof $rfd]} {
 		gets $rfd line
+		set line [regsub $::env(HOME) $line {$::env(HOME)}]
 		set line [string trim $line]
 		if { ($flag == 1 && [string range $line 0 0] == "#") } {
 			set flag 0
